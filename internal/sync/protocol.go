@@ -1,6 +1,10 @@
 // Package sync provides CRDT state synchronization for Viva Las Mesh Layer 1.
 package sync
 
+import (
+	"context"
+)
+
 // SyncProtocol handles delta synchronization between peers.
 type SyncProtocol struct {
 	localNodeID string

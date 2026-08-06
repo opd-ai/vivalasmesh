@@ -12,10 +12,11 @@ package daemon
 import (
 	"context"
 	"errors"
+	"net"
 	"sync"
 	"time"
 
-	"github.com/opd-ai/vivalasmesh/internal/sync"
+	syncpkg "github.com/opd-ai/vivalasmesh/internal/sync"
 	"github.com/opd-ai/vivalasmesh/internal/transport"
 )
 
@@ -30,19 +31,19 @@ var (
 // Peer represents a connected peer in the mesh.
 type Peer struct {
 	ID        string
-	Addr      transport.Addr
+	Addr      net.Addr
 	Transport transport.Transport
 	Connected time.Time
 	LastSeen  time.Time
-	State     *sync.Datastore
+	State     *syncpkg.Datastore
 }
 
 // DaemonConfig holds daemon configuration.
 type DaemonConfig struct {
 	NodeID       string
-	ListenAddrs  []transport.Addr
+	ListenAddrs  []net.Addr
 	Transports   []transport.Transport
-	Datastore    *sync.Datastore
+	Datastore    *syncpkg.Datastore
 	SyncInterval time.Duration
 }
 
@@ -230,7 +231,7 @@ func (d *Daemon) transportLoop(t transport.Transport) {
 }
 
 // handleFrame processes an incoming frame.
-func (d *Daemon) handleFrame(t transport.Transport, addr transport.Addr, frame []byte) {
+func (d *Daemon) handleFrame(t transport.Transport, addr net.Addr, frame []byte) {
 	// In a real implementation, this would:
 	// 1. Decrypt frame using Noise IK / Double Ratchet
 	// 2. Parse frame as CRDT delta

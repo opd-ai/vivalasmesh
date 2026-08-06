@@ -166,7 +166,28 @@ func (sp SubPixel) ANSISequence() string {
 }
 
 func rgb(c color.RGBA) string {
-	return string(rune(c.R)) + ";" + string(rune(c.G)) + ";" + string(rune(c.B))
+	return itoa(int(c.R)) + ";" + itoa(int(c.G)) + ";" + itoa(int(c.B))
+}
+
+func itoa(i int) string {
+	// Simple integer to string conversion
+	if i == 0 {
+		return "0"
+	}
+	var result string
+	neg := false
+	if i < 0 {
+		neg = true
+		i = -i
+	}
+	for i > 0 {
+		result = string(rune('0'+i%10)) + result
+		i /= 10
+	}
+	if neg {
+		result = "-" + result
+	}
+	return result
 }
 
 // Color helpers
