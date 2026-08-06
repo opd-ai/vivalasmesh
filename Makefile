@@ -4,10 +4,20 @@
 
 # Build targets
 build:
-	go build -o ./bin/viva-las-mesh ./cmd/viva-las-mesh
+	go build -o ./bin/viva-las-mesh ./cmd/mesh
 
 build-daemon:
 	go build -o ./bin/orchestrator-server ./cmd/orchestrator-server
+
+# Cross-platform build targets
+cross-build-linux:
+	GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" -o ./bin/viva-las-mesh-linux ./cmd/mesh
+
+cross-build-macos:
+	GOOS=darwin GOARCH=amd64 go build -ldflags="-s -w" -o ./bin/viva-las-mesh-darwin ./cmd/mesh
+
+cross-build-windows:
+	GOOS=windows GOARCH=amd64 go build -ldflags="-s -w" -o ./bin/viva-las-mesh-windows.exe ./cmd/mesh
 
 # Test targets
 test:
@@ -23,14 +33,12 @@ test-cover:
 # Lint & Vet targets
 vet:
 	go vet ./...
-
 lint:
 	golangci-lint run ./...
 
 # Stats analysis
 stats:
 	go-stats-generator analyze . --skip-tests --format json --sections functions,duplication,documentation -o tmp/stats.json
-
 stats-diff:
 	go-stats-generator diff tmp/baseline-exec.json tmp/stats.json
 
