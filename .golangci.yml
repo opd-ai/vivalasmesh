@@ -1,0 +1,109 @@
+version: "2"
+
+linters:
+  default: none
+  enable:
+    - govet
+    - errcheck
+    - staticcheck
+    - unused
+    - gosimple
+    - ineffassign
+    - bodyclose
+    - copyloopvar
+    - gocritic
+    - gosec
+    - misspell
+    - prealloc
+    - nakedret
+    - unconvert
+    - unparam
+    - whitespace
+    - goconst
+    - gocyclo
+    - dupl
+    - funlen
+    - gocognit
+    - nestif
+    - cyclop
+    - exhaustruct
+    - exhaustive
+    - errorlint
+    - fmt
+    - importas
+    - makezero
+    - nilerr
+    - nilnil
+    - noctx
+    - nolintlint
+    - perfsprint
+    - protogetter
+    - reassign
+    - recordered
+    - revive
+    - sloppyreassign
+    - spancheck
+    - stdmethods
+    - testifylint
+    - thelper
+    - tparallel
+    - unparam
+    - usestdlibvars
+    - varcheck
+    - wastedassign
+    - wrapcheck
+
+linters-settings:
+  gocyclo:
+    min-complexity: 10
+  funlen:
+    lines: 30
+    statements: 50
+  gocognit:
+    min-complexity: 10
+  nestif:
+    min-complexity: 4
+  cyclop:
+    max-complexity: 10
+  dupl:
+    threshold: 100
+  goconst:
+    min-len: 3
+    min-occurrences: 3
+  misspell:
+    locale: US
+  prealloc:
+    simple: true
+    range-loops: true
+  revive:
+    rules:
+      - name: exported
+        disabled: false
+      - name: package-comments
+        disabled: false
+      - name: doc-comments
+        disabled: false
+    severity: warning
+    confidence: 0.8
+
+issues:
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - funlen
+        - gocognit
+        - gocyclo
+        - cyclop
+        - dupl
+    - path: cmd/
+      linters:
+        - funlen
+        - gocognit
+        - gocyclo
+        - cyclop
+
+output:
+  format: colored-line-number
+  print-issued-lines: true
+  print-linter-name: true
+  uniq-by-line: true
