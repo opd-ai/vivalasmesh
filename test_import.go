@@ -3,8 +3,6 @@
 
 package main
 
-import "fmt"
+import _ "github.com/charmbracelet/bubbletea"
 
-func main() {
-	fmt.Println("Orchestrator server placeholder")
-}
+func main() {}

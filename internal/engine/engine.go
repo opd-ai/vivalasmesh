@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Viva Las Mesh Authors
+// SPDX-License-Identifier: MIT
+
 // Package engine provides the game engine core for Viva Las Mesh Layer 2.
 // This is Layer 2 (Game Mechanics) - Pulse engine, simulturn, world model.
 //

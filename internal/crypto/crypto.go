@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Viva Las Mesh Authors
+// SPDX-License-Identifier: MIT
+
 // Package crypto provides cryptographic primitives for Viva Las Mesh Layer 1.
 // This is Layer 1 (P2P Infrastructure) - Noise IK, Double Ratchet, key management.
 //

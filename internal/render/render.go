@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Viva Las Mesh Authors
+// SPDX-License-Identifier: MIT
+
 // Package render provides sub-pixel rendering for Viva Las Mesh Layer 2.
 // This is Layer 2 (Game Mechanics) - Sub-pixel rendering, Z-buffer, UI.
 //

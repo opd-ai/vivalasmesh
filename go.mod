@@ -9,6 +9,7 @@ require (
 	github.com/charmbracelet/lipgloss v1.1.0
 	github.com/ipfs/go-datastore v0.9.0
 	golang.org/x/crypto v0.29.0
+	github.com/meshtastic/meshtastic-go v0.0.0
 )
 
 require (

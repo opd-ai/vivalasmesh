@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Viva Las Mesh Authors
+// SPDX-License-Identifier: MIT
+
 // Package tui provides the Bubble Tea TUI for Viva Las Mesh Layer 2.
 // This is Layer 2 (Game Mechanics) - Bubble Tea TUI, input handling, fuzzy palette.
 //

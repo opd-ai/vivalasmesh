@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Viva Las Mesh Authors
+// SPDX-License-Identifier: MIT
+
 // Package sync provides CRDT state synchronization for Viva Las Mesh Layer 1.
 // This is Layer 1 (P2P Infrastructure) - CRDT, Merkle tree, state convergence.
 //

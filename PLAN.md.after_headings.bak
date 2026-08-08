@@ -1,15 +1,6 @@
 # Viva Las Mesh: Master Production Release Plan and Technical Roadmap
 This master production release plan establishes the technical, architectural, and asset deployment pipeline for Viva Las Mesh—a terminal-native, multi-temporal, simulturn MUD and tactical heist simulator set across the Las Vegas Valley. Built in Go utilizing the Charmbracelet ecosystem (Bubble Tea, Lip Gloss, Bubbles), the engine executes off-grid state replication over multi-transport peer-to-peer (P2P) networks, integrating Meshtastic LoRa radio hardware, Tor v3 hidden services, I2P SAM garlic tunnels, and Bluetooth Low Energy (BLE) proximity meshes.
 The technical execution matrix below translates the project’s design codices into an actionable, sequential master checklist. Every task must be completed systematically to transition the engine from its pre-alpha codebase into a production-ready release candidate.
-
-## Progress Tracking
-
-- [ ] Milestone 1: Core Architecture & Environment Setup
-- [ ] Milestone 2: Simulation Foundation & Deterministic Engine
-- [ ] Milestone 3: Asset Pipeline & World Building
-- [ ] Milestone 4: Quality Assurance, Balancing & Optimization
-- [ ] Milestone 5: Production Readiness & Deployment
-
 ## Milestone 1: Core Architecture & Environment Setup
 Milestone 1 establishes the low-level Go 1.24+ runtime, the terminal sub-pixel rendering engine, the multi-transport P2P background daemon (orchestrator-server), the Conflict-Free Replicated Data Type (CRDT) state synchronization engine, and the multi-tier pulse clock hierarchy.
 The rendering layer operates inside ANSI-compliant terminal emulators, utilizing upper half-block characters (▀, U+2580) to achieve double vertical resolution (120 \times 80 effective pixels in a standard 120 \times 40 terminal cell). Rendering composition is strictly structured across a 5-layer Z-buffer matrix (Z-0 to Z-4) to isolate floor grids, terrain, entities, particle effects, and HUD interfaces. The network daemon operates out-of-process, interfacing with physical radio hardware and anonymized overlay networks to sync game state using Noise IK protocols and Merkle tree verification.
@@ -25,13 +16,10 @@ The rendering layer operates inside ANSI-compliant terminal emulators, utilizing
 | Pulse Clock Engine | Micro / Macro / Meta / Eon | 250ms / 1000ms / 10.0s / 60.0s divisions | Go channels & precision tickers |
 ### Execution Checklist: Core Architecture & Setup
  * [ ] 1.1 Repository Initialization & Environment Configuration
-   * [x] Initialize Go 1.24+ module workspace structure across designated directories (/cmd/mesh, /pkg/render, /pkg/p2p, /pkg/engine).
-   * [x] Configure third-party dependency locks for charmbracelet/bubbletea, charmbracelet/lipgloss, and charmbracelet/bubbles.
-    * [x] Add go-i2p/onramp dependency for I2P support
-    * [x] Add fxamacker/cbor/v2 dependency for CBOR serialization
-    * [ ] Add Meshtastic driver dependency for LoRa communication
-   * [x] Establish repository license compliance headers referencing the MIT License.
-   * [x] Set up automated cross-platform build scripts targeting Linux (x86_64/ARM64), macOS (Apple Silicon/Intel), and Windows (x86_64).
+   * [ ] Initialize Go 1.24+ module workspace structure across designated directories (/cmd/mesh, /pkg/render, /pkg/p2p, /pkg/engine).
+   * [ ] Configure third-party dependency locks for charmbracelet/bubbletea, charmbracelet/lipgloss, and charmbracelet/bubbles.
+   * [ ] Establish repository license compliance headers referencing the MIT License.
+   * [ ] Set up automated cross-platform build scripts targeting Linux (x86_64/ARM64), macOS (Apple Silicon/Intel), and Windows (x86_64).
  * [ ] 1.2 Sub-Pixel Terminal Rendering Engine (▀) Implementation
    * [ ] Construct the half-block (▀, U+2580) canvas buffer establishing 120 \times 80 sub-pixel addressing within standard terminal cells.
    * [ ] Implement 24-bit TrueColor ANSI escape sequence generators for upper sub-pixel foreground (\x1b[38;2;R;G;Bm) and lower sub-pixel background (\x1b[48;2;R;G;Bm) color channels.

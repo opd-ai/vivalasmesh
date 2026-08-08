@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Viva Las Mesh Authors
+// SPDX-License-Identifier: MIT
+
 // Package transport provides the transport abstraction layer for Viva Las Mesh.
 // This is Layer 1 (P2P Infrastructure) - Real-world multi-transport engine.
 //

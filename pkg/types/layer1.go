@@ -1,3 +1,6 @@
+// Copyright (c) 2026 Viva Las Mesh Authors
+// SPDX-License-Identifier: MIT
+
 // Package types provides shared type definitions for Viva Las Mesh.
 // This package is carefully segregated by architectural layer:
 //   - Layer 1 types (transport, crypto, sync, daemon) in types/layer1/
