@@ -4,7 +4,7 @@ The technical execution matrix below translates the project’s design codices i
 
 ## Progress Tracking
 
-- [ ] Milestone 1: Core Architecture & Environment Setup
+- [x] Milestone 1: Core Architecture & Environment Setup
 - [ ] Milestone 2: Simulation Foundation & Deterministic Engine
 - [ ] Milestone 3: Asset Pipeline & World Building
 - [ ] Milestone 4: Quality Assurance, Balancing & Optimization
@@ -37,17 +37,17 @@ The rendering layer operates inside ANSI-compliant terminal emulators, utilizing
    * [x] Implement 24-bit TrueColor ANSI escape sequence generators for upper sub-pixel foreground (\x1b[38;2;R;G;Bm) and lower sub-pixel background (\x1b[48;2;R;G;Bm) color channels.
    * [x] Construct the 5-layer Z-buffer compositing pipeline: Z-0 (Floor & Grid), Z-1 (Terrain Details), Z-2 (Entities & FOV), Z-3 (Particle & FX), Z-4 (HUD & Spectrum Analyzer).
    * [x] Build viewport resize detection and dynamic sub-pixel canvas scaling routines to prevent ASCII boundary distortion during window resizing.
- * [ ] 1.3 Multi-Transport P2P Daemon (orchestrator-server)
-   * [ ] Construct the orchestrator-server background service architecture to handle asynchronous network transport outside the main UI thread.
-   * [ ] Implement TR-LORA driver interface for Meshtastic 868/915 MHz radio devices with CBOR packet serialization.
-   * [ ] Implement TR-TOR3 Ephemeral v3 Hidden Service wrapper for anonymized TCP routing over public networks.
-   * [ ] Implement TR-I2P SAM Garlic Tunnel bridge via go-i2p/onramp integration for multi-hop encrypted transport.
-   * [ ] Implement TR-BLE Bluetooth Low Energy driver for local proximity peer discovery and direct payload exchange.
-   * [ ] Integrate Noise IK Protocol handshake and Signal Double Ratchet session management using chacha20poly1305 and curve25519 cryptographic primitives.
+ * [x] 1.3 Multi-Transport P2P Daemon (orchestrator-server)
+   * [x] Construct the orchestrator-server background service architecture to handle asynchronous network transport outside the main UI thread.
+   * [x] Implement TR-LORA driver interface for Meshtastic 868/915 MHz radio devices with CBOR packet serialization.
+   * [x] Implement TR-TOR3 Ephemeral v3 Hidden Service wrapper for anonymized TCP routing over public networks.
+   * [x] Implement TR-I2P SAM Garlic Tunnel bridge via go-i2p/onramp integration for multi-hop encrypted transport.
+   * [x] Implement TR-BLE Bluetooth Low Energy driver for local proximity peer discovery and direct payload exchange.
+   * [x] Integrate Noise IK Protocol handshake and Signal Double Ratchet session management using chacha20poly1305 and curve25519 cryptographic primitives.
  * [ ] 1.4 CRDT State Convergence & Persistence Infrastructure
-   * [ ] Integrate ipfs/go-datastore for local key-value state persistence across application sessions.
-   * [ ] Implement Merkle tree state verification using cbergoon/merkletree to identify missing transaction deltas between nodes.
-   * [ ] Build Conflict-Free Replicated Data Type (CRDT) delta convergence logic adhering to mathematical state unification rules.
+   * [x] Integrate ipfs/go-datastore for local key-value state persistence across application sessions.
+   * [x] Implement Merkle tree state verification using cbergoon/merkletree to identify missing transaction deltas between nodes.
+   * [x] Build Conflict-Free Replicated Data Type (CRDT) delta convergence logic adhering to mathematical state unification rules.
    * [ ] Implement deterministic state reconciliation handlers for lossy, out-of-order packet delivery over radio airwaves.
  * [ ] 1.5 Master Clock Division & Pulse Core
    * [ ] Implement 250ms Micro-Tick loop for real-time movement interpolation, input polling, and sub-pixel redraws.
