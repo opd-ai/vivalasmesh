@@ -36,7 +36,7 @@ The rendering layer operates inside ANSI-compliant terminal emulators, utilizing
    * [x] Construct the half-block (▀, U+2580) canvas buffer establishing 120 \times 80 sub-pixel addressing within standard terminal cells.
    * [x] Implement 24-bit TrueColor ANSI escape sequence generators for upper sub-pixel foreground (\x1b[38;2;R;G;Bm) and lower sub-pixel background (\x1b[48;2;R;G;Bm) color channels.
    * [x] Construct the 5-layer Z-buffer compositing pipeline: Z-0 (Floor & Grid), Z-1 (Terrain Details), Z-2 (Entities & FOV), Z-3 (Particle & FX), Z-4 (HUD & Spectrum Analyzer).
-   * [ ] Build viewport resize detection and dynamic sub-pixel canvas scaling routines to prevent ASCII boundary distortion during window resizing.
+   * [x] Build viewport resize detection and dynamic sub-pixel canvas scaling routines to prevent ASCII boundary distortion during window resizing.
  * [ ] 1.3 Multi-Transport P2P Daemon (orchestrator-server)
    * [ ] Construct the orchestrator-server background service architecture to handle asynchronous network transport outside the main UI thread.
    * [ ] Implement TR-LORA driver interface for Meshtastic 868/915 MHz radio devices with CBOR packet serialization.

@@ -136,6 +136,28 @@ func (c *Canvas) ClearAll() {
 	}
 }
 
+// Resize changes the canvas dimensions and reallocates layers.
+// width and height are in character cells.
+// Returns an error if dimensions are invalid.
+func (c *Canvas) Resize(width, height int) error {
+	if width <= 0 || height <= 0 {
+		return ErrInvalidCanvasSize
+	}
+	// Same limits as NewCanvas
+	if width > 240 || height > 80 {
+		return ErrInvalidCanvasSize
+	}
+	c.Width = width
+	c.Height = height
+	for i := range c.Layers {
+		c.Layers[i] = make([][]SubPixel, height)
+		for y := range c.Layers[i] {
+			c.Layers[i][y] = make([]SubPixel, width)
+		}
+	}
+	return nil
+}
+
 // Render composites all layers and returns ANSI escape sequences.
 // Returns a string ready to write to terminal.
 func (c *Canvas) Render() string {
