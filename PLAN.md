@@ -1,10 +1,19 @@
-Viva Las Mesh: Master Production Release Plan and Technical Roadmap
+# Viva Las Mesh: Master Production Release Plan and Technical Roadmap
 This master production release plan establishes the technical, architectural, and asset deployment pipeline for Viva Las Mesh—a terminal-native, multi-temporal, simulturn MUD and tactical heist simulator set across the Las Vegas Valley. Built in Go utilizing the Charmbracelet ecosystem (Bubble Tea, Lip Gloss, Bubbles), the engine executes off-grid state replication over multi-transport peer-to-peer (P2P) networks, integrating Meshtastic LoRa radio hardware, Tor v3 hidden services, I2P SAM garlic tunnels, and Bluetooth Low Energy (BLE) proximity meshes.
 The technical execution matrix below translates the project’s design codices into an actionable, sequential master checklist. Every task must be completed systematically to transition the engine from its pre-alpha codebase into a production-ready release candidate.
-Milestone 1: Core Architecture & Environment Setup
+
+## Progress Tracking
+
+- [ ] Milestone 1: Core Architecture & Environment Setup
+- [ ] Milestone 2: Simulation Foundation & Deterministic Engine
+- [ ] Milestone 3: Asset Pipeline & World Building
+- [ ] Milestone 4: Quality Assurance, Balancing & Optimization
+- [ ] Milestone 5: Production Readiness & Deployment
+
+## Milestone 1: Core Architecture & Environment Setup
 Milestone 1 establishes the low-level Go 1.24+ runtime, the terminal sub-pixel rendering engine, the multi-transport P2P background daemon (orchestrator-server), the Conflict-Free Replicated Data Type (CRDT) state synchronization engine, and the multi-tier pulse clock hierarchy.
 The rendering layer operates inside ANSI-compliant terminal emulators, utilizing upper half-block characters (▀, U+2580) to achieve double vertical resolution (120 \times 80 effective pixels in a standard 120 \times 40 terminal cell). Rendering composition is strictly structured across a 5-layer Z-buffer matrix (Z-0 to Z-4) to isolate floor grids, terrain, entities, particle effects, and HUD interfaces. The network daemon operates out-of-process, interfacing with physical radio hardware and anonymized overlay networks to sync game state using Noise IK protocols and Merkle tree verification.
-Engine Core & Network Infrastructure Specifications
+### Engine Core & Network Infrastructure Specifications
 | Technical Subsystem | Component Target | Performance / Operational Standard | Protocol / Library Dependency |
 |---|---|---|---|
 | Terminal Canvas Engine | Sub-Pixel Renderer (▀) | 120 \times 80 effective resolution at 60 FPS | charmbracelet/lipgloss, bubbletea |
@@ -14,7 +23,7 @@ Engine Core & Network Infrastructure Specifications
 | Darknet Anonymity | TR-TOR3 & TR-I2P | 4096B (Tor v3) / 1024B (I2P Garlic) frames | Noise IK, Signal Double Ratchet |
 | State Synchronization | CRDT Delta Engine | Associative, commutative, idempotent state | ipfs/go-datastore, cbergoon/merkletree |
 | Pulse Clock Engine | Micro / Macro / Meta / Eon | 250ms / 1000ms / 10.0s / 60.0s divisions | Go channels & precision tickers |
-Execution Checklist: Core Architecture & Setup
+### Execution Checklist: Core Architecture & Setup
  * [ ] 1.1 Repository Initialization & Environment Configuration
    * [ ] Initialize Go 1.24+ module workspace structure across designated directories (/cmd/mesh, /pkg/render, /pkg/p2p, /pkg/engine).
    * [ ] Configure third-party dependency locks for charmbracelet/bubbletea, charmbracelet/lipgloss, and charmbracelet/bubbles.
@@ -42,10 +51,10 @@ Execution Checklist: Core Architecture & Setup
    * [ ] Implement 1000ms Macro-Pulse loop for room state updates, guard pathfinding execution, SCADA timers, and packet dispatching.
    * [ ] Implement 10.0s Meta-Pulse loop for metabolic decay, hydration consumption, police heat decay, and mob interest accrual.
    * [ ] Implement 60.0s Eon-Pulse loop for spectral apparition checks and cross-network casino jackpot pool drift.
-Milestone 2: Gameplay Mechanics & Systems Integration
+## Milestone 2: Gameplay Mechanics & Systems Integration
 Milestone 2 operationalizes the simulturn resolution engine, multi-temporal era logic, diegetic electromagnetic hacking, faction political state machines, survival mechanics, and mob escalation protocols.
 Actions staged during micro-ticks resolve simultaneously at macro-pulse boundaries using a strict 5-tier priority matrix. In-game hacking spans the physical RF spectrum from VLF to Ku-band and optical fiber, deploying zero-days and SCADA overrides against casino infrastructure. Gameplay incorporates hardcore desert survival mechanics, a chemical dispensary catalog, a dynamic Paranoia Index ("Bat Country" visual shaders), and high-stakes mob punishment systems, including real-time desert grave escape sequences and the Morgue Wake State.
-Simulturn Priority & System Mechanics Specifications
+### Simulturn Priority & System Mechanics Specifications
 | System Domain | Operational Rule / Mechanism | System Outcome / Priority Tier |
 |---|---|---|
 | Tier 1 Priority | Divine & Spectral Intervention | Transcends physical reality; overrides all physical actions |
@@ -56,7 +65,7 @@ Simulturn Priority & System Mechanics Specifications
 | Police Heat | 0 to 5 Star Pursuit Machine | Modifies guard response rate from 10-pulse loops to 250ms ticks |
 | Paranoia Index | Chemical & Heat Derivative | Triggers canvas shaders: Smooth Synergy to Existential Dread |
 | Escapology | Desert Pit Real-Time Sequences | 4-phase timed survival sequence (Trunk, Dig, Execution, Standoff) |
-Execution Checklist: Gameplay Mechanics & Systems Integration
+### Execution Checklist: Gameplay Mechanics & Systems Integration
  * [ ] 2.1 Simulturn Staging & Resolution Matrix
    * [ ] Implement action staging queue processing actions across Priority Tiers 1 through 5.
    * [ ] Build attribute-based tie-breaker evaluation routines (Hustle, Hardware, Street Smarts) for equal-tier action collisions.
@@ -90,10 +99,10 @@ Execution Checklist: Gameplay Mechanics & Systems Integration
    * [ ] Implement Rat Pack Pantheon luck entropy system governing Frank Sinatra, Dean Martin, Sammy Davis Jr., and Howard Hughes offerings.
    * [ ] Build "The Cosmic Cooler" roaming NPC logic that drains 50% player luck via CRDT state updates.
    * [ ] Program Global 777 CRDT Progressive Jackpot aggregating casino losses and heist failures into a cross-network pool.
-Milestone 3: Asset Pipeline & World Building
+## Milestone 3: Asset Pipeline & World Building
 Milestone 3 focuses on populating the game world with item assets, procedural salvage generation engines, crafting workbenches, sub-pixel visual art, audio spectrum visualizers, spatial level maps, and frictionless user interface controls.
 The asset pipeline utilizes 6 \times 6 dual-axis matrices to generate hundreds of procedural item profile variations from mundane desert garbage and corporate trash. Level design spans authentic historical and fictionalized Las Vegas sites across all four temporal eras. Interface controls prioritize zero execution friction, combining context-aware smart keys (Space / Enter), ANSI mouse tracking, and a fuzzy-search action palette (Ctrl+K).
-Content Pipeline & UI/UX Specifications
+### Content Pipeline & UI/UX Specifications
 | Asset / UI Subsystem | Structure Target | Functional Specification |
 |---|---|---|
 | Procedural Salvage | 6 \times 6 Generation Matrices | 6 distinct matrices mapping material bases against wear states |
@@ -103,7 +112,7 @@ Content Pipeline & UI/UX Specifications
 | World Map Sectors | 8 Key Node Locations | Test Site, Sky Room, Stardust, Jean Lake, Mirage, Tunnels, etc. |
 | Frictionless UX | Smart Key (Space) | Contextually resolves highest-priority environmental action |
 | Action Palette | Fuzzy Finder (Ctrl+K) | Natural language search with embedded success probability |
-Execution Checklist: Asset Pipeline & World Building
+### Execution Checklist: Asset Pipeline & World Building
  * [ ] 3.1 Procedural Salvage & Item Asset Pipeline
    * [ ] Ingest mundane survival utilities: Terrible's Cup, Casino Water, Electrolyte Packets, Matchbooks, Ice Bucket Liners, Antacids.
    * [ ] Ingest corporate credentials: Players Club Cards, RFID Keys, VIP Wristbands, Shift Schedules, Uniform Patches, Press Passes.
@@ -141,7 +150,7 @@ Execution Checklist: Asset Pipeline & World Building
    * [ ] Implement ANSI SGR mouse tracking (\x1b[?1006h) supporting left-click movement, right-click context radials, hover tooltips, and drag-and-drop inventory management.
    * [ ] Construct Fuzzy Action Palette (Ctrl+K / /) featuring natural language auto-complete and success probability previews.
    * [ ] Build "The Vegas Street Guide" diegetic onboarding prologue sequence set in Era 4 flood channels.
-Milestone 4: Quality Assurance, Balancing & Optimization
+## Milestone 4: Quality Assurance, Balancing & Optimization
 Milestone 4 subjects the compiled engine to rigorous performance optimization, P2P network simulation, simulturn collision testing, economy balancing, and bug triage.
 Performance tuning guarantees stable sub-16ms frame render times (60 FPS) across various ANSI terminal emulators. Multi-transport P2P netcode is stress-tested under high packet drop and latency conditions to confirm CRDT convergence stability. System balancing calibrates item spawn rates, money laundering fees, paranoia escalation curves, and combat damage metrics.
 QA Benchmarks & Performance Targets
@@ -153,7 +162,7 @@ QA Benchmarks & Performance Targets
 | CRDT Convergence | 100% state parity across 50 peer nodes | Automated Merkle tree comparison scripts |
 | Simulturn Determinism | 0 state desyncs during 100-player shootouts | Headless simulturn collision simulation suites |
 | Terminal Compatibility | Full compatibility with Kitty, Alacritty, WezTerm | Matrix validation suite across terminal drivers |
-Execution Checklist: Quality Assurance & Optimization
+### Execution Checklist: Quality Assurance & Optimization
  * [ ] 4.1 Terminal Rendering & Sub-Pixel Performance Optimization
    * [ ] Profile Lip Gloss / Bubble Tea render loops to enforce sub-16ms frame redraw rates.
    * [ ] Benchmark Z-buffer cell compositing performance across 120 \times 80 sub-pixel viewport boundaries.
@@ -179,10 +188,10 @@ Execution Checklist: Quality Assurance & Optimization
    * [ ] Test ANSI mouse tracking precision across varying terminal font sizes and screen geometries.
    * [ ] Conduct end-to-end playthrough audits of "The Vegas Street Guide" onboarding sequence.
    * [ ] Triage and resolve blocker, critical, and major bugs in the issue tracking system.
-Milestone 5: Production Readiness & Deployment
+## Milestone 5: Production Readiness & Deployment
 Milestone 5 executes the final release packaging, binary compilation, licensing compliance verification, network seed node deployment, and launch execution.
 Final binaries are cross-compiled into standalone packages containing both the orchestrator-server daemon and the viva-las-mesh TUI executable. Darknet seed nodes (Tor v3 .onion and I2P SAM destinations) and Meshtastic radio channels are established to bootstrap off-grid state replication.
-Deployment Pipeline & Release Artifacts
+### Deployment Pipeline & Release Artifacts
 | Release Target | Artifact Type | Distribution Channel | Compliance / Security Target |
 |---|---|---|---|
 | Linux (x86_64 / ARM64) | Standalone Binary Pair | GitHub Releases / Tarball | SHA-256 Checksum, MIT License |
@@ -191,7 +200,7 @@ Deployment Pipeline & Release Artifacts
 | Tor Seed Nodes | .onion Hidden Service | Darknet P2P Overlay | Tor v3 Ephemeral Keys |
 | I2P Seed Nodes | SAM Destination | Darknet P2P Overlay | I2P Garlic Router |
 | LoRa Channels | Config Payload | Physical Radio Airwaves | 868/915 MHz Public Mesh |
-Execution Checklist: Production Readiness & Deployment
+### Execution Checklist: Production Readiness & Deployment
  * [ ] 5.1 Release Packaging & Binary Cross-Compilation
    * [ ] Execute automated cross-compilation builds for Linux (x86_64, arm64), macOS (universal), and Windows (x86_64).
    * [ ] Package standalone orchestrator-server background daemon alongside main viva-las-mesh executable.
@@ -210,7 +219,7 @@ Execution Checklist: Production Readiness & Deployment
    * [ ] Publish official viva-las-mesh v1.0 release packages to distribution channels.
    * [ ] Activate Radio Free Graceland airwave broadcast channel and initiate the global MUD heartbeat loop.
    * [ ] Transition project repository from staging to active production release state.
-Technical Summary & Critical Path Dependencies
+## Technical Summary & Critical Path Dependencies
 To maintain production momentum, execution must strictly follow the critical path dependencies outlined below. No milestone phase may be bypassed:
  * Core Renderer Before Mechanics: Sub-pixel canvas rendering (▀) and Z-buffer compositing (Milestone 1) must be stabilized before rendering complex entity movement, dynamic lighting, or Paranoia canvas shaders (Milestone 2).
  * P2P Transport Daemon Before State Sync: The orchestrator-server daemon and multi-transport drivers (TR-LORA, TR-TOR3, TR-I2P) (Milestone 1) must be operational before testing CRDT state convergence or global 777 progressive jackpots (Milestone 2).
