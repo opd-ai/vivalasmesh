@@ -5,10 +5,10 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/charmbracelet/bubbletea"
+	bt "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
 	"github.com/ipfs/go-datastore"
-	"golang.org/x/crypto"
+	"golang.org/x/crypto/chacha20poly1305"
 )
 
 // TestDependenciesMatchSpecification validates that go.mod declares all dependencies required by
@@ -36,8 +36,8 @@ func TestDependenciesMatchSpecification(t *testing.T) {
 	}
 
 	// Implicit import check that dependencies resolve correctly
-	_ = bubbletea.NewProgram(nil)
+	_ = bt.NewProgram(nil)
 	_ = lipgloss.NewStyle()
 	_ = datastore.NewMapDatastore
-	_ = crypto.Salsa20
+	_, _ = chacha20poly1305.New(nil)
 }
