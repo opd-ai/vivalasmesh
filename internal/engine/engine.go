@@ -17,7 +17,51 @@ package engine
 
 import (
 	"errors"
+	"sync"
+	"time"
 )
+
+// Engine represents the core game engine.
+type Engine struct {
+	pulseEngine *PulseEngine
+	running     bool
+	mu          sync.Mutex
+}
+
+// NewEngine creates a new game engine with the given micro and macro tick durations.
+func NewEngine() *Engine {
+	return &Engine{
+		pulseEngine: NewPulseEngine(250*time.Millisecond, 1000*time.Millisecond, 1024),
+	}
+}
+
+// Start starts the engine and its pulse loop.
+func (e *Engine) Start() error {
+	e.mu.Lock()
+	defer e.mu.Unlock()
+	if e.running {
+		return ErrPulseNotRunning // Reuse error, or define a new one
+	}
+	if err := e.pulseEngine.Start(); err != nil {
+		return err
+	}
+	e.running = true
+	return nil
+}
+
+// Stop stops the engine and its pulse loop.
+func (e *Engine) Stop() error {
+	e.mu.Lock()
+	defer e.mu.Unlock()
+	if !e.running {
+		return ErrPulseNotRunning
+	}
+	if err := e.pulseEngine.Stop(); err != nil {
+		return err
+	}
+	e.running = false
+	return nil
+}
 
 // Common errors.
 var (

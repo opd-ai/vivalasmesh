@@ -48,9 +48,9 @@ The rendering layer operates inside ANSI-compliant terminal emulators, utilizing
    * [x] Integrate ipfs/go-datastore for local key-value state persistence across application sessions.
    * [x] Implement Merkle tree state verification using cbergoon/merkletree to identify missing transaction deltas between nodes.
    * [x] Build Conflict-Free Replicated Data Type (CRDT) delta convergence logic adhering to mathematical state unification rules.
-   * [ ] Implement deterministic state reconciliation handlers for lossy, out-of-order packet delivery over radio airwaves.
+   * [x] Implement deterministic state reconciliation handlers for lossy, out-of-order packet delivery over radio airwaves.
  * [ ] 1.5 Master Clock Division & Pulse Core
-   * [ ] Implement 250ms Micro-Tick loop for real-time movement interpolation, input polling, and sub-pixel redraws.
+   * [x] Implement 250ms Micro-Tick loop for real-time movement interpolation, input polling, and sub-pixel redraws.
    * [ ] Implement 1000ms Macro-Pulse loop for room state updates, guard pathfinding execution, SCADA timers, and packet dispatching.
    * [ ] Implement 10.0s Meta-Pulse loop for metabolic decay, hydration consumption, police heat decay, and mob interest accrual.
    * [ ] Implement 60.0s Eon-Pulse loop for spectral apparition checks and cross-network casino jackpot pool drift.

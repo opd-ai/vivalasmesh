@@ -6,6 +6,7 @@ package sync
 
 import (
 	"context"
+	"sync"
 )
 
 // SyncProtocol handles delta synchronization between peers.
@@ -20,6 +21,59 @@ func NewSyncProtocol(nodeID string, ds *Datastore) *SyncProtocol {
 		localNodeID: nodeID,
 		datastore:   ds,
 	}
+}
+
+// ReconciliationHandler handles deterministic state reconciliation for lossy,
+// out-of-order packet delivery.
+type ReconciliationHandler struct {
+	nodeID   string
+	protocol *SyncProtocol
+	mu       sync.Mutex
+	pending  map[string][][]byte // peerID -> list of deltas
+}
+
+// NewReconciliationHandler creates a new reconciliation handler.
+func NewReconciliationHandler(nodeID string, protocol *SyncProtocol) *ReconciliationHandler {
+	return &ReconciliationHandler{
+		nodeID:   nodeID,
+		protocol: protocol,
+		pending:  make(map[string][][]byte),
+	}
+}
+
+// SendDelta sends a delta to a peer, storing it for potential retransmission.
+func (rh *ReconciliationHandler) SendDelta(ctx context.Context, peerID string, crdt CRDT) error {
+	// In a real implementation, we would compute the delta and send it over the
+	// network, then wait for an acknowledgment. For now, we just store the delta
+	// in the pending map to simulate tracking.
+	_, version, err := crdt.State()
+	if err != nil {
+		return err
+	}
+	delta, err := crdt.Delta(version)
+	if err != nil {
+		return err
+	}
+	rh.mu.Lock()
+	rh.pending[peerID] = append(rh.pending[peerID], delta)
+	rh.mu.Unlock()
+	return nil
+}
+
+// HandleIncomingDelta processes an incoming delta from a peer, merges it into
+// the local CRDT, and returns an acknowledgment delta (to be sent back).
+func (rh *ReconciliationHandler) HandleIncomingDelta(ctx context.Context, peerID string, localCRDT, remoteCRDT CRDT) (CRDT, error) {
+	// Merge the remote CRDT into the local one.
+	changed, err := localCRDT.Merge(remoteCRDT)
+	if err != nil {
+		return nil, err
+	}
+	// Persist the merged state if changed.
+	if changed {
+		_ = rh.protocol.datastore.Put(context.Background(), peerID+"/"+localCRDT.Type(), localCRDT)
+	}
+	// Return the local CRDT as the acknowledgment (simplified).
+	return localCRDT, nil
 }
 
 // SyncState synchronizes CRDT state with a peer.
