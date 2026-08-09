@@ -33,17 +33,29 @@ func (q *ActionQueue) Stage(action *Action) error {
 // Resolve sorts actions by priority tier and resolves conflicts.
 // Returns actions in resolution order.
 func (q *ActionQueue) Resolve() []*Action {
-	// Sort by tier (ascending = higher priority first), then by timestamp
-	// In a real implementation, this would be more complex with tie-breakers
+	// Sort by tier (ascending = higher priority first), then by tie-breaker score, then by timestamp
 	result := make([]*Action, len(q.actions))
 	copy(result, q.actions)
 
 	// Simple bubble sort for now (small N)
 	for i := 0; i < len(result)-1; i++ {
 		for j := 0; j < len(result)-i-1; j++ {
-			if result[j].Tier > result[j+1].Tier ||
-				(result[j].Tier == result[j+1].Tier && result[j].Timestamp.After(result[j+1].Timestamp)) {
-				result[j], result[j+1] = result[j+1], result[j]
+			a := result[j]
+			b := result[j+1]
+			if a.Tier > b.Tier {
+				result[j], result[j+1] = b, a
+			} else if a.Tier == b.Tier {
+				// Tie-breaker: compare attribute score (hustle+hardware+street_smarts), higher wins
+				scoreA := a.AttributeScore()
+				scoreB := b.AttributeScore()
+				if scoreA < scoreB {
+					result[j], result[j+1] = b, a
+				} else if scoreA == scoreB {
+					// If still tied, use timestamp (older first)
+					if a.Timestamp.After(b.Timestamp) {
+						result[j], result[j+1] = b, a
+					}
+				}
 			}
 		}
 	}

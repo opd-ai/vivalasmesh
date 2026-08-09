@@ -70,8 +70,8 @@ Actions staged during micro-ticks resolve simultaneously at macro-pulse boundari
 | Escapology | Desert Pit Real-Time Sequences | 4-phase timed survival sequence (Trunk, Dig, Execution, Standoff) |
 ### Execution Checklist: Gameplay Mechanics & Systems Integration
  * [ ] 2.1 Simulturn Staging & Resolution Matrix
-   * [ ] Implement action staging queue processing actions across Priority Tiers 1 through 5.
-   * [ ] Build attribute-based tie-breaker evaluation routines (Hustle, Hardware, Street Smarts) for equal-tier action collisions.
+   * [x] Implement action staging queue processing actions across Priority Tiers 1 through 5.
+   * [x] Build attribute-based tie-breaker evaluation routines (Hustle, Hardware, Street Smarts) for equal-tier action collisions.
    * [ ] Construct simultaneous resolution solver resolving concurrent attacks, dual pickups, and spatial movement collisions.
  * [ ] 2.2 Multi-Temporal Era Engine & Anachronism Detection
    * [ ] Construct world state engines for Era 1 (1953 Atomic AEC), Era 2 (1962 Mob Syndicate), Era 3 (1993 Corporate Mega-Resort), and Era 4 (2026 Cyber-Strip).
