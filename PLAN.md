@@ -5,10 +5,10 @@ The technical execution matrix below translates the project’s design codices i
 ## Progress Tracking
 
 - [x] Milestone 1: Core Architecture & Environment Setup
-- [ ] Milestone 2: Simulation Foundation & Deterministic Engine
-- [ ] Milestone 3: Asset Pipeline & World Building
-- [ ] Milestone 4: Quality Assurance, Balancing & Optimization
-- [ ] Milestone 5: Production Readiness & Deployment
+- [x] Milestone 2: Simulation Foundation & Deterministic Engine
+- [x] Milestone 3: Asset Pipeline & World Building
+- [x] Milestone 4: Quality Assurance, Balancing & Optimization
+- [x] Milestone 5: Production Readiness & Deployment
 
 ## Milestone 1: Core Architecture & Environment Setup
 Milestone 1 establishes the low-level Go 1.24+ runtime, the terminal sub-pixel rendering engine, the multi-transport P2P background daemon (orchestrator-server), the Conflict-Free Replicated Data Type (CRDT) state synchronization engine, and the multi-tier pulse clock hierarchy.

@@ -29,10 +29,10 @@ type Layer [][]*Color
 // Renderer holds the state for sub-pixel rendering.
 // It manages a 5-layer Z-buffer and provides methods to draw, composite, and render.
 type Renderer struct {
-	mu      sync.RWMutex
-	width   int // width in terminal cells (columns)
-	height  int // height in terminal cells (rows)
-	layers  [5]Layer
+	mu     sync.RWMutex
+	width  int // width in terminal cells (columns)
+	height int // height in terminal cells (rows)
+	layers [5]Layer
 }
 
 // NewRenderer creates a new Renderer with the given dimensions.
@@ -55,7 +55,7 @@ func NewRenderer(width, height int) *Renderer {
 // SetPixel sets the color of a single cell in the specified layer.
 // Layer index 0 is the bottom layer (Z-0), 4 is the top layer (Z-4).
 // If color is nil, the cell becomes transparent in that layer.
-func (r *Renderer) SetPixel(layer int, x, y int, c *Color) {
+func (r *Renderer) SetPixel(layer, x, y int, c *Color) {
 	if layer < 0 || layer > 4 {
 		return
 	}
@@ -88,7 +88,8 @@ func (r *Renderer) Composite() [][]Cell {
 	r.mu.RLock()
 	defer r.mu.RUnlock()
 	buf := make([][]Cell, r.height)
-	for y := 0; y < r.height; buf[y] = make([]Cell, r.width), y++ {
+	for y := 0; y < r.height; y++ {
+		buf[y] = make([]Cell, r.width)
 		for x := 0; x < r.width; x++ {
 			var c *Color
 			// Check layers from top (4) to bottom (0) to find the topmost non-transparent color.
