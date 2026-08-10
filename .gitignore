@@ -33,3 +33,18 @@ go.work.sum
 
 # Do not ignore audit documentation
 !AUDIT.md
+
+# Analysis artifacts
+*-baseline.json
+*-post.json
+diff-report*.json
+*.json
+
+# Loop artifacts
+*.log
+*.tmp
+*.temp
+
+# Temporary directories
+tmp/
+bin/*
