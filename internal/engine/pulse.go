@@ -10,12 +10,15 @@ import (
 	"time"
 )
 
-// PulseEngine manages the 250ms micro-tick and 1000ms macro-pulse.
+// PulseEngine manages the 250ms micro-tick, 1000ms macro-pulse,
+// 10.0s meta-pulse, and 60.0s eon-pulse.
 type PulseEngine struct {
 	ctx          context.Context
 	cancel       context.CancelFunc
 	microTick    time.Duration
 	macroPulse   time.Duration
+	metaPulse    time.Duration
+	eonPulse     time.Duration
 	microTicks   int
 	actionQueue  *ActionQueue
 	running      bool
@@ -23,16 +26,20 @@ type PulseEngine struct {
 	wg           sync.WaitGroup
 	onMicroTick  func(int)
 	onMacroPulse func()
+	onMetaPulse  func()
+	onEonPulse   func()
 }
 
 // NewPulseEngine creates a new pulse engine.
-func NewPulseEngine(microTick, macroPulse time.Duration, queueSize int) *PulseEngine {
+func NewPulseEngine(microTick, macroPulse, metaPulse, eonPulse time.Duration, queueSize int) *PulseEngine {
 	ctx, cancel := context.WithCancel(context.Background())
 	return &PulseEngine{
 		ctx:         ctx,
 		cancel:      cancel,
 		microTick:   microTick,
 		macroPulse:  macroPulse,
+		metaPulse:   metaPulse,
+		eonPulse:    eonPulse,
 		actionQueue: NewActionQueue(queueSize),
 	}
 }
@@ -78,8 +85,12 @@ func (p *PulseEngine) run() {
 
 	microTicker := time.NewTicker(p.microTick)
 	macroTicker := time.NewTicker(p.macroPulse)
+	metaTicker := time.NewTicker(p.metaPulse)
+	eonTicker := time.NewTicker(p.eonPulse)
 	defer microTicker.Stop()
 	defer macroTicker.Stop()
+	defer metaTicker.Stop()
+	defer eonTicker.Stop()
 
 	for {
 		select {
@@ -106,6 +117,16 @@ func (p *PulseEngine) run() {
 			if p.onMacroPulse != nil {
 				p.onMacroPulse()
 			}
+		case <-metaTicker.C:
+			// Meta pulse fired
+			if p.onMetaPulse != nil {
+				p.onMetaPulse()
+			}
+		case <-eonTicker.C:
+			// Eon pulse fired
+			if p.onEonPulse != nil {
+				p.onEonPulse()
+			}
 		}
 	}
 }
@@ -118,6 +139,16 @@ func (p *PulseEngine) SetMicroTickHandler(fn func(int)) {
 // SetMacroPulseHandler sets the macro-pulse callback.
 func (p *PulseEngine) SetMacroPulseHandler(fn func()) {
 	p.onMacroPulse = fn
+}
+
+// SetMetaPulseHandler sets the meta-pulse callback.
+func (p *PulseEngine) SetMetaPulseHandler(fn func()) {
+	p.onMetaPulse = fn
+}
+
+// SetEonPulseHandler sets the eon-pulse callback.
+func (p *PulseEngine) SetEonPulseHandler(fn func()) {
+	p.onEonPulse = fn
 }
 
 // MicroTicks returns the current micro-tick count.

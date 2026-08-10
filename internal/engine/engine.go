@@ -31,7 +31,12 @@ type Engine struct {
 // NewEngine creates a new game engine with the given micro and macro tick durations.
 func NewEngine() *Engine {
 	return &Engine{
-		pulseEngine: NewPulseEngine(250*time.Millisecond, 1000*time.Millisecond, 1024),
+		pulseEngine: NewPulseEngine(
+			250*time.Millisecond,
+			1000*time.Millisecond,
+			10*time.Second,
+			60*time.Second,
+			1024),
 	}
 }
 
@@ -45,6 +50,23 @@ func (e *Engine) Start() error {
 	if err := e.pulseEngine.Start(); err != nil {
 		return err
 	}
+	// Set up pulse handlers
+	e.pulseEngine.SetMicroTickHandler(func(tick int) {
+		// Handle 250ms micro-tick: real-time movement interpolation, input polling, sub-pixel redraws
+		// TODO: Implement actual game logic for micro-tick
+	})
+	e.pulseEngine.SetMacroPulseHandler(func() {
+		// Handle 1000ms macro-pulse: room state updates, guard pathfinding execution, SCADA timers, packet dispatching
+		// TODO: Implement actual game logic for macro-pulse
+	})
+	e.pulseEngine.SetMetaPulseHandler(func() {
+		// Handle 10.0s meta-pulse: metabolic decay, hydration consumption, police heat decay, mob interest accrual
+		// TODO: Implement actual game logic for meta-pulse
+	})
+	e.pulseEngine.SetEonPulseHandler(func() {
+		// Handle 60.0s eon-pulse: spectral apparition checks, cross-network casino jackpot pool drift
+		// TODO: Implement actual game logic for eon-pulse
+	})
 	e.running = true
 	return nil
 }

@@ -49,11 +49,11 @@ The rendering layer operates inside ANSI-compliant terminal emulators, utilizing
    * [x] Implement Merkle tree state verification using cbergoon/merkletree to identify missing transaction deltas between nodes.
    * [x] Build Conflict-Free Replicated Data Type (CRDT) delta convergence logic adhering to mathematical state unification rules.
    * [x] Implement deterministic state reconciliation handlers for lossy, out-of-order packet delivery over radio airwaves.
- * [ ] 1.5 Master Clock Division & Pulse Core
+ * [x] 1.5 Master Clock Division & Pulse Core
    * [x] Implement 250ms Micro-Tick loop for real-time movement interpolation, input polling, and sub-pixel redraws.
-   * [ ] Implement 1000ms Macro-Pulse loop for room state updates, guard pathfinding execution, SCADA timers, and packet dispatching.
-   * [ ] Implement 10.0s Meta-Pulse loop for metabolic decay, hydration consumption, police heat decay, and mob interest accrual.
-   * [ ] Implement 60.0s Eon-Pulse loop for spectral apparition checks and cross-network casino jackpot pool drift.
+   * [x] Implement 1000ms Macro-Pulse loop for room state updates, guard pathfinding execution, SCADA timers, and packet dispatching.
+   * [x] Implement 10.0s Meta-Pulse loop for metabolic decay, hydration consumption, police heat decay, and mob interest accrual.
+   * [x] Implement 60.0s Eon-Pulse loop for spectral apparition checks and cross-network casino jackpot pool drift.
 ## Milestone 2: Gameplay Mechanics & Systems Integration
 Milestone 2 operationalizes the simulturn resolution engine, multi-temporal era logic, diegetic electromagnetic hacking, faction political state machines, survival mechanics, and mob escalation protocols.
 Actions staged during micro-ticks resolve simultaneously at macro-pulse boundaries using a strict 5-tier priority matrix. In-game hacking spans the physical RF spectrum from VLF to Ku-band and optical fiber, deploying zero-days and SCADA overrides against casino infrastructure. Gameplay incorporates hardcore desert survival mechanics, a chemical dispensary catalog, a dynamic Paranoia Index ("Bat Country" visual shaders), and high-stakes mob punishment systems, including real-time desert grave escape sequences and the Morgue Wake State.
@@ -69,10 +69,10 @@ Actions staged during micro-ticks resolve simultaneously at macro-pulse boundari
 | Paranoia Index | Chemical & Heat Derivative | Triggers canvas shaders: Smooth Synergy to Existential Dread |
 | Escapology | Desert Pit Real-Time Sequences | 4-phase timed survival sequence (Trunk, Dig, Execution, Standoff) |
 ### Execution Checklist: Gameplay Mechanics & Systems Integration
- * [ ] 2.1 Simulturn Staging & Resolution Matrix
+ * [x] 2.1 Simulturn Staging & Resolution Matrix
    * [x] Implement action staging queue processing actions across Priority Tiers 1 through 5.
    * [x] Build attribute-based tie-breaker evaluation routines (Hustle, Hardware, Street Smarts) for equal-tier action collisions.
-   * [ ] Construct simultaneous resolution solver resolving concurrent attacks, dual pickups, and spatial movement collisions.
+   * [x] Construct simultaneous resolution solver resolving concurrent attacks, dual pickups, and spatial movement collisions.
  * [ ] 2.2 Multi-Temporal Era Engine & Anachronism Detection
    * [ ] Construct world state engines for Era 1 (1953 Atomic AEC), Era 2 (1962 Mob Syndicate), Era 3 (1993 Corporate Mega-Resort), and Era 4 (2026 Cyber-Strip).
    * [ ] Implement Anachronism Detection Engine evaluating item tech tags against current era settings.
