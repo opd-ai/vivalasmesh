@@ -38,6 +38,9 @@ const (
 	AttrDignity      Attribute = "dignity"       // Willpower, resistance, presence
 	AttrLuck         Attribute = "luck"          // Fortune, entropy, jackpot
 	AttrParanoia     Attribute = "paranoia"      // Awareness, detection, Bat Country
+	AttrHealth       Attribute = "health"        // Health points (0-100)
+	AttrBuzz         Attribute = "buzz"          // Buzz level (0-10)
+	AttrHydration    Attribute = "hydration"     // Hydration level (0-100)
 )
 
 // Attributes holds all character attributes.

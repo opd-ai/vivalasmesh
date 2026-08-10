@@ -44,7 +44,7 @@ The rendering layer operates inside ANSI-compliant terminal emulators, utilizing
    * [x] Implement TR-I2P SAM Garlic Tunnel bridge via go-i2p/onramp integration for multi-hop encrypted transport.
    * [x] Implement TR-BLE Bluetooth Low Energy driver for local proximity peer discovery and direct payload exchange.
    * [x] Integrate Noise IK Protocol handshake and Signal Double Ratchet session management using chacha20poly1305 and curve25519 cryptographic primitives.
- * [ ] 1.4 CRDT State Convergence & Persistence Infrastructure
+ * [x] 1.4 CRDT State Convergence & Persistence Infrastructure
    * [x] Integrate ipfs/go-datastore for local key-value state persistence across application sessions.
    * [x] Implement Merkle tree state verification using cbergoon/merkletree to identify missing transaction deltas between nodes.
    * [x] Build Conflict-Free Replicated Data Type (CRDT) delta convergence logic adhering to mathematical state unification rules.
@@ -88,7 +88,7 @@ Actions staged during micro-ticks resolve simultaneously at macro-pulse boundari
    * [ ] Implement "The Skim" money laundering channels across high-stakes craps (LN-CRAPS), dispensary retail (LN-DISP), pawn shops (LN-PAWN), and casino count rooms (LN-CAGE).
    * [ ] Construct 4-stage simulturn vault heist state machine: Stage 1 (Surveillance Bypass), Stage 2 (Guard Neutralization), Stage 3 (Vault Unlock), Stage 4 (Cash Extraction).
  * [ ] 2.5 Physiology, Dispensary Catalog & Paranoia Shaders
-   * [ ] Implement core player attribute handlers: Health (0–100), Buzz (0–10), Hydration (0–100%), Hustle (1–20), Street Smarts (1–20), Dignity (1–20), Hardware (1–20).
+   * [x] Implement core player attribute handlers: Health (0–100), Buzz (0–10), Hydration (0–100%), Hustle (1–20), Street Smarts (1–20), Dignity (1–20), Hardware (1–20).
    * [ ] Program chemical intake mechanics for dispensaries: THC Distillate (CH-DIST), Live Resin (CH-CART), Nano-THC Soda (CH-SODA), Melatonin (CH-MEL), Psilocybin (CH-SHRM), THCA Diamond Wax (CH-WAX).
    * [ ] Construct mathematical Paranoia Index derivation engine combining THC dosage, metabolic ticks, alcohol level, heat, and street smarts.
    * [ ] Build terminal canvas color distortion shaders for Paranoia states: Smooth Synergy (1–5), Greening Out (6–12), Bat Country (13–20), Existential Dread (21+).
